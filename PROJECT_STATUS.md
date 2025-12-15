@@ -71,7 +71,7 @@ git init
 git add .
 git commit -m "Initial commit: AI Resume Analyzer with creative design"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/ai-resume-analyzer.git
+git remote add origin https://github.com/bankutech/ai-resume-analyzer.git
 git push -u origin main
 ```
 

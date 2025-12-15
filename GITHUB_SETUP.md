@@ -28,7 +28,7 @@ git add .
 git commit -m "Initial commit: AI Resume Analyzer with creative design"
 
 # Add your GitHub repository as remote
-git remote add origin https://github.com/YOUR_USERNAME/ai-resume-analyzer.git
+git remote add origin https://github.com/bankutech/ai-resume-analyzer.git
 
 # Push to GitHub
 git branch -M main
@@ -117,9 +117,9 @@ The project includes a CI workflow (`.github/workflows/ci.yml`) that will:
 Add these to your README.md (already included):
 
 ```markdown
-![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/ai-resume-analyzer)
-![GitHub forks](https://img.shields.io/github/forks/YOUR_USERNAME/ai-resume-analyzer)
-![GitHub issues](https://img.shields.io/github/issues/YOUR_USERNAME/ai-resume-analyzer)
+![GitHub stars](https://img.shields.io/github/stars/bankutech/ai-resume-analyzer)
+![GitHub forks](https://img.shields.io/github/forks/bankutech/ai-resume-analyzer)
+![GitHub issues](https://img.shields.io/github/issues/bankutech/ai-resume-analyzer)
 ```
 
 ## Next Steps

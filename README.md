@@ -2,14 +2,37 @@
 
 A **creative, professional AI-powered resume analyzer** with stunning visual design, comprehensive insights, and personalized feedback to help your resume stand out!
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/ai-resume-analyzer?style=social)](https://github.com/yourusername/ai-resume-analyzer)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/ai-resume-analyzer?style=social)](https://github.com/yourusername/ai-resume-analyzer)
+[![GitHub stars](https://img.shields.io/github/stars/bankutech/ai-resume-analyzer?style=social)](https://github.com/bankutech/ai-resume-analyzer)
+[![GitHub forks](https://img.shields.io/github/forks/bankutech/ai-resume-analyzer?style=social)](https://github.com/bankutech/ai-resume-analyzer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![AI Resume Analyzer](https://img.shields.io/badge/AI-Resume%20Analyzer-purple?style=for-the-badge)
 ![React](https://img.shields.io/badge/React-18.2-blue?style=for-the-badge&logo=react)
 ![Flask](https://img.shields.io/badge/Flask-3.0-green?style=for-the-badge&logo=flask)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-blue?style=for-the-badge&logo=tailwindcss)
+
+## ⚡ Quick Start (3 Steps)
+
+```bash
+# 1. Clone and install
+git clone https://github.com/bankutech/ai-resume-analyzer.git
+cd ai-resume-analyzer
+npm install
+py -m pip install -r requirements.txt  # Windows
+# OR: pip install -r requirements.txt   # Mac/Linux
+
+# 2. Start backend (Terminal 1) - MUST RUN FIRST!
+cd backend
+py app.py  # Windows
+# OR: python3 app.py  # Mac/Linux
+
+# 3. Start frontend (Terminal 2) - NEW TERMINAL!
+npm run dev
+
+# 4. Open http://localhost:3000 in your browser
+```
+
+**⚠️ IMPORTANT:** You need **TWO terminal windows** - one for backend, one for frontend!
 
 ## ✨ Features
 
@@ -48,7 +71,7 @@ A **creative, professional AI-powered resume analyzer** with stunning visual des
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ai-resume-analyzer.git
+   git clone https://github.com/bankutech/ai-resume-analyzer.git
    cd ai-resume-analyzer
    ```
    
@@ -64,25 +87,40 @@ A **creative, professional AI-powered resume analyzer** with stunning visual des
    This will install React, Vite, Tailwind CSS, and all other frontend packages.
 
 3. **Install Backend Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-   Or on Windows:
+   
+   **On Windows:**
    ```bash
    py -m pip install -r requirements.txt
    ```
+   
+   **On Mac/Linux:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+   Or use Python 3 explicitly:
+   ```bash
+   python3 -m pip install -r requirements.txt
+   ```
+   
    This will install Flask, PyPDF2, python-docx, and other backend packages.
 
-4. **Create uploads directory** (if it doesn't exist)
+4. **Verify uploads directory exists**
    ```bash
+   # The uploads directory should already exist with .gitkeep file
+   # If not, create it:
    mkdir uploads
    ```
 
 ## 🚀 Running the Application
 
-### **Option 1: Manual Start (Recommended for Development)**
+### ⚠️ **CRITICAL: You Need TWO Terminal Windows!**
 
-#### **Step 1: Start the Backend Server**
+The application requires **both backend and frontend** to be running simultaneously.
+
+### **Option 1: Manual Start (Recommended)**
+
+#### **Step 1: Start the Backend Server (Terminal 1)**
 
 **On Windows:**
 ```bash
@@ -96,23 +134,24 @@ cd backend
 python3 app.py
 ```
 
-✅ You should see:
+✅ **You MUST see this message:**
 ```
  * Running on http://127.0.0.1:5000
  * Debug mode: on
 ```
 
-**Keep this terminal window open!** The backend must stay running.
+**⚠️ IMPORTANT:** Keep this terminal window open! The backend must stay running.
 
-#### **Step 2: Start the Frontend Server**
+#### **Step 2: Start the Frontend Server (Terminal 2)**
 
-Open a **NEW terminal window** and run:
+**Open a NEW terminal window** (keep Terminal 1 running!) and run:
 
 ```bash
+# Make sure you're in the project root (not backend folder)
 npm run dev
 ```
 
-✅ You should see:
+✅ **You should see:**
 ```
   VITE v5.x.x  ready in XXXX ms
   ➜  Local:   http://localhost:3000/
@@ -123,7 +162,11 @@ npm run dev
 #### **Step 3: Open in Browser**
 
 🌐 Open your browser and go to:
-- **http://localhost:3000** (or the port shown in terminal)
+- **http://localhost:3000** (or the port shown in Terminal 2)
+
+**✅ Both terminals should be running:**
+- Terminal 1: Backend (Flask) - port 5000
+- Terminal 2: Frontend (Vite) - port 3000
 
 ### **Option 2: Using Batch Files (Windows Only)**
 
@@ -139,8 +182,16 @@ npm run dev
 
 ## 📝 How to Use
 
+### Prerequisites
+- ✅ Backend must be running (Terminal 1: `cd backend && py app.py`)
+- ✅ Frontend must be running (Terminal 2: `npm run dev`)
+- ✅ Both terminals should be open and running
+
+### Steps
+
 1. **Open the Application**
-   - Navigate to `http://localhost:3000` (or the port shown in your terminal)
+   - Navigate to `http://localhost:3000` (or the port shown in Terminal 2)
+   - If you see errors, check that backend is running first!
 
 2. **Upload Your Resume**
    - Click "Choose file or drag & drop"
@@ -150,6 +201,7 @@ npm run dev
 3. **Analyze Your Resume**
    - Click the "Analyze Resume" button
    - Wait a few seconds for the analysis to complete
+   - If you get "Network Error", the backend is not running!
 
 4. **View Results**
    - **Overall Score**: See your resume's performance (0-100)
@@ -220,43 +272,89 @@ project2/
 
 ## 🐛 Troubleshooting
 
+### ⚠️ IMPORTANT: Both Servers Must Be Running!
+
+**The application requires TWO servers running simultaneously:**
+1. Backend (Flask) on port 5000
+2. Frontend (Vite) on port 3000
+
+**If the page doesn't work, check:**
+- ✅ Is the backend running? (You should see "Running on http://127.0.0.1:5000")
+- ✅ Is the frontend running? (You should see "Local: http://localhost:3000")
+- ✅ Are both terminal windows still open?
+
 ### Backend won't start
 - ✅ Make sure Python is installed: `py --version` or `python --version`
 - ✅ Install dependencies: `py -m pip install -r requirements.txt`
 - ✅ Check if port 5000 is already in use
+- ✅ Make sure you're in the backend directory: `cd backend`
+- ✅ Try: `py app.py` (Windows) or `python3 app.py` (Mac/Linux)
 
 ### Frontend won't start
 - ✅ Make sure Node.js is installed: `node --version`
-- ✅ Install dependencies: `npm install`
+- ✅ Install dependencies: `npm install` (run in project root, not backend folder)
 - ✅ Check if the port is already in use (Vite will try the next available port)
+- ✅ If port 3000 is busy, Vite will use 3001, 3002, etc. - check terminal output
 
-### Can't connect to backend
-- ✅ Make sure backend is running on port 5000
-- ✅ Check the browser console for errors (F12)
-- ✅ Verify the proxy settings in `vite.config.js`
+### Can't connect to backend / "Network Error"
+- ✅ **MOST COMMON ISSUE**: Backend is not running!
+- ✅ Start backend first: `cd backend && py app.py`
+- ✅ Wait for: "Running on http://127.0.0.1:5000"
+- ✅ Then start frontend: `npm run dev`
+- ✅ Check the browser console for errors (F12 → Console tab)
+- ✅ Verify backend is accessible: Open http://localhost:5000/api/health in browser
+
+### Page loads but upload doesn't work
+- ✅ Check browser console (F12) for errors
+- ✅ Verify backend is running (most common issue)
+- ✅ Check Network tab in browser DevTools - is the request failing?
+- ✅ Make sure file is PDF, DOCX, or TXT
+- ✅ Check file size (max 16MB)
+
+### "Cannot connect to backend server" error
+- ✅ Backend must be running before you start frontend
+- ✅ Check if backend started successfully
+- ✅ Try accessing http://localhost:5000/api/health directly
+- ✅ Make sure no firewall is blocking port 5000
 
 ### File upload errors
 - ✅ Make sure file is PDF, DOCX, or TXT
 - ✅ Check file size (max 16MB)
 - ✅ Ensure backend is running
+- ✅ Check uploads directory exists: `ls uploads` or `dir uploads`
+
+### Setup Script Issues
+- ✅ Run `setup.bat` (Windows) or `setup.sh` (Mac/Linux) to auto-setup
+- ✅ Or manually follow the installation steps above
 
 ## 🚀 Quick Start Commands
 
 ```bash
-# Install everything
+# 1. Install everything
 npm install
-py -m pip install -r requirements.txt
+py -m pip install -r requirements.txt  # Windows
+# OR
+pip install -r requirements.txt         # Mac/Linux
 
-# Start backend (Terminal 1)
+# 2. Start backend (Terminal 1) - MUST RUN FIRST!
 cd backend
-py app.py
+py app.py  # Windows
+# OR
+python3 app.py  # Mac/Linux
 
-# Start frontend (Terminal 2)
+# 3. Start frontend (Terminal 2) - NEW TERMINAL WINDOW!
+# (Make sure you're back in project root, not backend folder)
 npm run dev
 
-# Open browser
-# Go to http://localhost:3000
+# 4. Open browser
+# Go to http://localhost:3000 (or port shown in terminal)
 ```
+
+**⚠️ Remember:** 
+- Backend must start FIRST
+- Keep BOTH terminals open
+- Backend runs on port 5000
+- Frontend runs on port 3000 (or next available)
 
 ## 📸 Screenshots
 
@@ -310,8 +408,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- 🐛 [Report a Bug](https://github.com/yourusername/ai-resume-analyzer/issues)
-- 💡 [Request a Feature](https://github.com/yourusername/ai-resume-analyzer/issues)
+- 🐛 [Report a Bug](https://github.com/bankutech/ai-resume-analyzer/issues)
+- 💡 [Request a Feature](https://github.com/bankutech/ai-resume-analyzer/issues)
 - 📧 Open an issue for questions
 
 ---
