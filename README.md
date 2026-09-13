@@ -1,4 +1,4 @@
-# ai-resume-analyzer
+# ai resume analyzer
 
 ## Overview
 A **creative, professional AI-powered resume analyzer** with stunning visual design, comprehensive insights, and personalized feedback to help your resume stand out!
