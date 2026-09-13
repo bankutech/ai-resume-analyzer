@@ -1,5 +1,6 @@
-# AI Resume Analyzer 🚀✨
+# ai-resume-analyzer
 
+## Overview
 A **creative, professional AI-powered resume analyzer** with stunning visual design, comprehensive insights, and personalized feedback to help your resume stand out!
 
 [![GitHub stars](https://img.shields.io/github/stars/bankutech/ai-resume-analyzer?style=social)](https://github.com/bankutech/ai-resume-analyzer)
@@ -11,7 +12,7 @@ A **creative, professional AI-powered resume analyzer** with stunning visual des
 ![Flask](https://img.shields.io/badge/Flask-3.0-green?style=for-the-badge&logo=flask)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-blue?style=for-the-badge&logo=tailwindcss)
 
-## ⚡ Quick Start (3 Steps)
+##  Quick Start (3 Steps)
 
 ```bash
 # 1. Clone and install
@@ -32,40 +33,40 @@ npm run dev
 # 4. Open http://localhost:3000 in your browser
 ```
 
-**⚠️ IMPORTANT:** You need **TWO terminal windows** - one for backend, one for frontend!
+**️ IMPORTANT:** You need **TWO terminal windows** - one for backend, one for frontend!
 
-## ✨ Features
+##  Features
 
-- **🎯 Multi-dimensional Analysis**: Completeness, Content Quality, Professionalism, Technical Depth, Creativity
-- **📊 Visual Analytics**: Interactive radar charts and beautiful score visualizations
-- **💡 Creative Insights**: Personality traits, career level assessment, and market readiness
-- **🎨 Stunning UI**: Modern glassmorphism design with animated gradients
-- **🤖 Smart Suggestions**: Personalized improvement recommendations
-- **🔍 Skill Detection**: Automatically identifies technical and soft skills
-- **📈 Real-time Analysis**: Instant feedback on your resume
+- ** Multi-dimensional Analysis**: Completeness, Content Quality, Professionalism, Technical Depth, Creativity
+- ** Visual Analytics**: Interactive radar charts and beautiful score visualizations
+- ** Creative Insights**: Personality traits, career level assessment, and market readiness
+- ** Stunning UI**: Modern glassmorphism design with animated gradients
+- ** Smart Suggestions**: Personalized improvement recommendations
+- ** Skill Detection**: Automatically identifies technical and soft skills
+- ** Real-time Analysis**: Instant feedback on your resume
 
-## 🛠️ Tech Stack
+## ️ Tech Stack
 
 ### Frontend
-- ⚛️ React 18 with Vite
-- 🎨 Tailwind CSS (Custom animations & glassmorphism)
-- 📊 Recharts (Data visualization)
-- 🎯 Lucide React (Beautiful icons)
-- 🌐 Axios (API communication)
+- ️ React 18 with Vite
+-  Tailwind CSS (Custom animations & glassmorphism)
+-  Recharts (Data visualization)
+-  Lucide React (Beautiful icons)
+-  Axios (API communication)
 
 ### Backend
-- 🐍 Flask (Python web framework)
-- 📄 PyPDF2 (PDF parsing)
-- 📝 python-docx (DOCX parsing)
-- 🔄 Flask-CORS (Cross-origin support)
+-  Flask (Python web framework)
+-  PyPDF2 (PDF parsing)
+-  python-docx (DOCX parsing)
+-  Flask-CORS (Cross-origin support)
 
-## 📦 Installation
+##  Installation
 
 ### Prerequisites
-- ✅ Node.js (v16 or higher) - [Download](https://nodejs.org/)
-- ✅ Python 3.8 or higher - [Download](https://www.python.org/)
-- ✅ npm (comes with Node.js)
-- ✅ pip (comes with Python)
+-  Node.js (v16 or higher) - [Download](https://nodejs.org/)
+-  Python 3.8 or higher - [Download](https://www.python.org/)
+-  npm (comes with Node.js)
+-  pip (comes with Python)
 
 ### Step-by-Step Setup
 
@@ -112,9 +113,9 @@ npm run dev
    mkdir uploads
    ```
 
-## 🚀 Running the Application
+##  Running the Application
 
-### ⚠️ **CRITICAL: You Need TWO Terminal Windows!**
+### ️ **CRITICAL: You Need TWO Terminal Windows!**
 
 The application requires **both backend and frontend** to be running simultaneously.
 
@@ -134,13 +135,13 @@ cd backend
 python3 app.py
 ```
 
-✅ **You MUST see this message:**
+ **You MUST see this message:**
 ```
  * Running on http://127.0.0.1:5000
  * Debug mode: on
 ```
 
-**⚠️ IMPORTANT:** Keep this terminal window open! The backend must stay running.
+**️ IMPORTANT:** Keep this terminal window open! The backend must stay running.
 
 #### **Step 2: Start the Frontend Server (Terminal 2)**
 
@@ -151,20 +152,20 @@ python3 app.py
 npm run dev
 ```
 
-✅ **You should see:**
+ **You should see:**
 ```
   VITE v5.x.x  ready in XXXX ms
-  ➜  Local:   http://localhost:3000/
+    Local:   http://localhost:3000/
 ```
 
 **Note:** If port 3000 is busy, Vite will automatically use 3001, 3002, etc. Check the terminal output for the actual port.
 
 #### **Step 3: Open in Browser**
 
-🌐 Open your browser and go to:
+ Open your browser and go to:
 - **http://localhost:3000** (or the port shown in Terminal 2)
 
-**✅ Both terminals should be running:**
+** Both terminals should be running:**
 - Terminal 1: Backend (Flask) - port 5000
 - Terminal 2: Frontend (Vite) - port 3000
 
@@ -180,12 +181,12 @@ npm run dev
    npm run dev
    ```
 
-## 📝 How to Use
+##  How to Use
 
 ### Prerequisites
-- ✅ Backend must be running (Terminal 1: `cd backend && py app.py`)
-- ✅ Frontend must be running (Terminal 2: `npm run dev`)
-- ✅ Both terminals should be open and running
+-  Backend must be running (Terminal 1: `cd backend && py app.py`)
+-  Frontend must be running (Terminal 2: `npm run dev`)
+-  Both terminals should be open and running
 
 ### Steps
 
@@ -212,7 +213,7 @@ npm run dev
    - **Statistics**: Word count, sections, career level
    - **Suggestions**: Personalized improvement tips
 
-## 📊 Analysis Dimensions
+##  Analysis Dimensions
 
 | Dimension | Description |
 |-----------|-------------|
@@ -223,7 +224,7 @@ npm run dev
 | **Creativity** | Unique elements, projects, soft skills |
 | **Market Readiness** | Overall job market preparedness |
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 project2/
@@ -246,22 +247,22 @@ project2/
 └── README.md                  # This file
 ```
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 - `POST /api/analyze` - Analyze uploaded resume file
   - **Request**: Multipart form data with file
   - **Response**: JSON with analysis results
 - `GET /api/health` - Health check endpoint
 
-## 📄 Supported File Formats
+##  Supported File Formats
 
-- ✅ **PDF** (.pdf) - Most common format
-- ✅ **Microsoft Word** (.docx) - Word documents
-- ✅ **Plain Text** (.txt) - Simple text files
+-  **PDF** (.pdf) - Most common format
+-  **Microsoft Word** (.docx) - Word documents
+-  **Plain Text** (.txt) - Simple text files
 
 **Maximum file size:** 16MB
 
-## 🎨 Design Features
+##  Design Features
 
 - **Glassmorphism**: Frosted glass effect on cards
 - **Animated Gradients**: Smooth color transitions
@@ -270,64 +271,64 @@ project2/
 - **Responsive Design**: Works on desktop, tablet, and mobile
 - **Professional Typography**: Inter and Poppins fonts
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
-### ⚠️ IMPORTANT: Both Servers Must Be Running!
+### ️ IMPORTANT: Both Servers Must Be Running!
 
 **The application requires TWO servers running simultaneously:**
 1. Backend (Flask) on port 5000
 2. Frontend (Vite) on port 3000
 
 **If the page doesn't work, check:**
-- ✅ Is the backend running? (You should see "Running on http://127.0.0.1:5000")
-- ✅ Is the frontend running? (You should see "Local: http://localhost:3000")
-- ✅ Are both terminal windows still open?
+-  Is the backend running? (You should see "Running on http://127.0.0.1:5000")
+-  Is the frontend running? (You should see "Local: http://localhost:3000")
+-  Are both terminal windows still open?
 
 ### Backend won't start
-- ✅ Make sure Python is installed: `py --version` or `python --version`
-- ✅ Install dependencies: `py -m pip install -r requirements.txt`
-- ✅ Check if port 5000 is already in use
-- ✅ Make sure you're in the backend directory: `cd backend`
-- ✅ Try: `py app.py` (Windows) or `python3 app.py` (Mac/Linux)
+-  Make sure Python is installed: `py --version` or `python --version`
+-  Install dependencies: `py -m pip install -r requirements.txt`
+-  Check if port 5000 is already in use
+-  Make sure you're in the backend directory: `cd backend`
+-  Try: `py app.py` (Windows) or `python3 app.py` (Mac/Linux)
 
 ### Frontend won't start
-- ✅ Make sure Node.js is installed: `node --version`
-- ✅ Install dependencies: `npm install` (run in project root, not backend folder)
-- ✅ Check if the port is already in use (Vite will try the next available port)
-- ✅ If port 3000 is busy, Vite will use 3001, 3002, etc. - check terminal output
+-  Make sure Node.js is installed: `node --version`
+-  Install dependencies: `npm install` (run in project root, not backend folder)
+-  Check if the port is already in use (Vite will try the next available port)
+-  If port 3000 is busy, Vite will use 3001, 3002, etc. - check terminal output
 
 ### Can't connect to backend / "Network Error"
-- ✅ **MOST COMMON ISSUE**: Backend is not running!
-- ✅ Start backend first: `cd backend && py app.py`
-- ✅ Wait for: "Running on http://127.0.0.1:5000"
-- ✅ Then start frontend: `npm run dev`
-- ✅ Check the browser console for errors (F12 → Console tab)
-- ✅ Verify backend is accessible: Open http://localhost:5000/api/health in browser
+-  **MOST COMMON ISSUE**: Backend is not running!
+-  Start backend first: `cd backend && py app.py`
+-  Wait for: "Running on http://127.0.0.1:5000"
+-  Then start frontend: `npm run dev`
+-  Check the browser console for errors (F12 → Console tab)
+-  Verify backend is accessible: Open http://localhost:5000/api/health in browser
 
 ### Page loads but upload doesn't work
-- ✅ Check browser console (F12) for errors
-- ✅ Verify backend is running (most common issue)
-- ✅ Check Network tab in browser DevTools - is the request failing?
-- ✅ Make sure file is PDF, DOCX, or TXT
-- ✅ Check file size (max 16MB)
+-  Check browser console (F12) for errors
+-  Verify backend is running (most common issue)
+-  Check Network tab in browser DevTools - is the request failing?
+-  Make sure file is PDF, DOCX, or TXT
+-  Check file size (max 16MB)
 
 ### "Cannot connect to backend server" error
-- ✅ Backend must be running before you start frontend
-- ✅ Check if backend started successfully
-- ✅ Try accessing http://localhost:5000/api/health directly
-- ✅ Make sure no firewall is blocking port 5000
+-  Backend must be running before you start frontend
+-  Check if backend started successfully
+-  Try accessing http://localhost:5000/api/health directly
+-  Make sure no firewall is blocking port 5000
 
 ### File upload errors
-- ✅ Make sure file is PDF, DOCX, or TXT
-- ✅ Check file size (max 16MB)
-- ✅ Ensure backend is running
-- ✅ Check uploads directory exists: `ls uploads` or `dir uploads`
+-  Make sure file is PDF, DOCX, or TXT
+-  Check file size (max 16MB)
+-  Ensure backend is running
+-  Check uploads directory exists: `ls uploads` or `dir uploads`
 
 ### Setup Script Issues
-- ✅ Run `setup.bat` (Windows) or `setup.sh` (Mac/Linux) to auto-setup
-- ✅ Or manually follow the installation steps above
+-  Run `setup.bat` (Windows) or `setup.sh` (Mac/Linux) to auto-setup
+-  Or manually follow the installation steps above
 
-## 🚀 Quick Start Commands
+##  Quick Start Commands
 
 ```bash
 # 1. Install everything
@@ -350,22 +351,22 @@ npm run dev
 # Go to http://localhost:3000 (or port shown in terminal)
 ```
 
-**⚠️ Remember:** 
+**️ Remember:** 
 - Backend must start FIRST
 - Keep BOTH terminals open
 - Backend runs on port 5000
 - Frontend runs on port 3000 (or next available)
 
-## 📸 Screenshots
+##  Screenshots
 
 The application features:
-- 🎨 Beautiful gradient backgrounds
-- 💎 Glassmorphism card designs
-- 📊 Interactive radar charts
-- 🎯 Colorful score visualizations
-- ✨ Smooth animations and transitions
+-  Beautiful gradient backgrounds
+-  Glassmorphism card designs
+-  Interactive radar charts
+-  Colorful score visualizations
+-  Smooth animations and transitions
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 - [ ] Integration with OpenAI API for advanced NLP
 - [ ] Resume comparison tool
@@ -376,11 +377,11 @@ The application features:
 - [ ] Multi-language support
 - [ ] Resume version history
 
-## 📜 License
+##  License
 
 MIT License - Feel free to use and modify!
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Feel free to:
 - Report bugs
@@ -388,7 +389,7 @@ Contributions are welcome! Feel free to:
 - Submit pull requests
 - Improve documentation
 
-## 💬 Support
+##  Support
 
 If you encounter any issues:
 1. Check the Troubleshooting section above
@@ -396,24 +397,30 @@ If you encounter any issues:
 3. Ensure both servers are running
 4. Verify all dependencies are installed
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Built with React, Flask, and lots of creativity
 - Icons by [Lucide](https://lucide.dev)
 - Charts by [Recharts](https://recharts.org)
 
-## 📞 Contact & Support
+##  Contact & Support
 
-- 🐛 [Report a Bug](https://github.com/bankutech/ai-resume-analyzer/issues)
-- 💡 [Request a Feature](https://github.com/bankutech/ai-resume-analyzer/issues)
-- 📧 Open an issue for questions
+-  [Report a Bug](https://github.com/bankutech/ai-resume-analyzer/issues)
+-  [Request a Feature](https://github.com/bankutech/ai-resume-analyzer/issues)
+-  Open an issue for questions
 
 ---
 
-**Made with ❤️ and creativity** - Transform your resume today! 🚀
+**Made with ️ and creativity** - Transform your resume today! 
 
 ⭐ Star this repo if you find it helpful!
+
+## Getting Started
+Please refer to the source files for specific installation and usage instructions. Ensure that your local environment meets the standard requirements for the associated technologies.
+
+## Project Structure
+This project is organized into standard directories. Key configuration files and primary source code are located in the root directory.
