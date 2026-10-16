@@ -1,0 +1,308 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ExperienceLevel {
+  STUDENT
+  FRESHER
+  JUNIOR
+  MID_SENIOR
+  EXECUTIVE
+}
+
+enum ApplicationStatus {
+  SAVED
+  APPLIED
+  ONLINE_ASSESSMENT
+  INTERVIEWING
+  OFFER
+  REJECTED
+  WITHDRAWN
+}
+
+model User {
+  id                  String          @id @default(uuid())
+  email               String          @unique
+  passwordHash        String
+  role                UserRole        @default(USER)
+  emailVerifiedAt     DateTime?
+  verifyTokenHash     String?
+  resetTokenHash      String?
+  resetTokenExpiresAt DateTime?
+  onboardingCompleted Boolean         @default(false)
+  isSuspended         Boolean         @default(false)
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  profile             CareerProfile?
+  resumes             Resume[]
+  resumeVersions      ResumeVersion[]
+  jobDescriptions     JobDescription[]
+  applications        JobApplication[]
+  savedJobs           SavedJob[]
+  coverLetters        CoverLetter[]
+  exportLogs          ExportLog[]
+  notifications       Notification[]
+  aiUsageLogs         AiUsageLog[]
+  feedbackItems       Feedback[]
+  auditLogs           AuditLog[]      @relation("ActorAuditLogs")
+  refreshTokens       RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+model CareerProfile {
+  id              String          @id @default(uuid())
+  userId          String          @unique
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName        String
+  headline        String?
+  targetRoles     String[]
+  experienceLevel ExperienceLevel @default(STUDENT)
+  location        String?
+  masterData      Json            // Vault of all reusable experiences, projects, skills, and achievements
+  updatedAt       DateTime        @updatedAt
+
+  @@map("career_profiles")
+}
+
+model Template {
+  id           String   @id @default(uuid())
+  slug         String   @unique
+  name         String
+  description  String
+  category     String   // "ATS", "Student", "Engineering", "Modern", "Academic", "Creative"
+  version      Int      @default(1)
+  isActive     Boolean  @default(true)
+  isPremium    Boolean  @default(false)
+  defaultTheme Json     // Default font, margins, accentColor
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("templates")
+}
+
+model Resume {
+  id              String          @id @default(uuid())
+  userId          String
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title           String
+  targetJobTitle  String?
+  templateSlug    String          @default("classic-ats")
+  document        Json            // Validated against ResumeDocumentSchema
+  lastAtsScore    Int?
+  lastAtsReport   Json?           // Cached deterministic breakdown
+  isPinned        Boolean         @default(false)
+  isSample        Boolean         @default(false)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  versions        ResumeVersion[]
+  applications    JobApplication[]
+  coverLetters    CoverLetter[]
+  exportLogs      ExportLog[]
+
+  @@index([userId, updatedAt(sort: Desc)])
+  @@map("resumes")
+}
+
+model ResumeVersion {
+  id               String   @id @default(uuid())
+  resumeId         String
+  resume           Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  versionNumber    Int
+  label            String   // e.g., "Manual Checkpoint", "Pre-AI Tailoring", "Autosave Snapshot"
+  documentSnapshot Json
+  atsScoreSnapshot Int?
+  createdAt        DateTime @default(now())
+
+  @@index([resumeId, versionNumber(sort: Desc)])
+  @@index([userId])
+  @@map("resume_versions")
+}
+
+model JobDescription {
+  id                String           @id @default(uuid())
+  userId            String
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title             String
+  company           String
+  location          String?
+  sourceUrl         String?
+  rawText           String           @db.Text
+  extractedKeywords Json             // Categorized hardSkills, softSkills, tools, qualifications
+  createdAt         DateTime         @default(now())
+
+  applications      JobApplication[]
+  coverLetters      CoverLetter[]
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("job_descriptions")
+}
+
+model JobApplication {
+  id               String            @id @default(uuid())
+  userId           String
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumeId         String?
+  resume           Resume?           @relation(fields: [resumeId], references: [id], onDelete: SetNull)
+  jobDescriptionId String?
+  jobDescription   JobDescription?   @relation(fields: [jobDescriptionId], references: [id], onDelete: SetNull)
+  company          String
+  roleTitle        String
+  location         String?
+  status           ApplicationStatus @default(SAVED)
+  jobUrl           String?
+  salaryRange      String?
+  appliedDate      DateTime?
+  nextFollowUpDate DateTime?
+  notes            String?           @db.Text
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([userId, status])
+  @@map("job_applications")
+}
+
+model SavedJob {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company     String
+  roleTitle   String
+  location    String?
+  jobUrl      String?
+  rawSnippet  String?  @db.Text
+  tags        String[]
+  priority    Int      @default(2) // 1=Low, 2=Medium, 3=High
+  createdAt   DateTime @default(now())
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("saved_jobs")
+}
+
+model CoverLetter {
+  id               String          @id @default(uuid())
+  userId           String
+  user             User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumeId         String?
+  resume           Resume?         @relation(fields: [resumeId], references: [id], onDelete: SetNull)
+  jobDescriptionId String?
+  jobDescription   JobDescription? @relation(fields: [jobDescriptionId], references: [id], onDelete: SetNull)
+  title            String
+  company          String?
+  roleTitle        String?
+  tone             String          @default("professional")
+  content          String          @db.Text
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@index([userId, updatedAt(sort: Desc)])
+  @@map("cover_letters")
+}
+
+model ExportLog {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumeId   String
+  resume     Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+  format     String   // "PDF" | "DOCX" | "JSON"
+  pageSize   String   // "A4" | "LETTER"
+  templateId String
+  fileSizeKb Int?
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@map("export_logs")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   // "INFO" | "SUCCESS" | "WARNING" | "SYSTEM"
+  actionUrl String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, isRead])
+  @@map("notifications")
+}
+
+model AiUsageLog {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  feature          String   // "REWRITE_BULLET" | "SUMMARY_GEN" | "JD_MATCH" | "COVER_LETTER" | "RESUME_REVIEW"
+  model            String   // "gemini-flash-latest"
+  promptTokens     Int      @default(0)
+  completionTokens Int      @default(0)
+  latencyMs        Int      @default(0)
+  status           String   // "SUCCESS" | "RATE_LIMITED" | "BLOCKED" | "ERROR"
+  errorCode        String?
+  createdAt        DateTime @default(now())
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([createdAt])
+  @@map("ai_usage_logs")
+}
+
+model Feedback {
+  id         String   @id @default(uuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  category   String   // "BUG" | "FEATURE_REQUEST" | "TEMPLATE_FEEDBACK" | "GENERAL"
+  rating     Int?     // 1 to 5
+  message    String   @db.Text
+  pagePath   String?
+  status     String   @default("OPEN") // "OPEN" | "IN_REVIEW" | "RESOLVED"
+  adminNotes String?
+  createdAt  DateTime @default(now())
+
+  @@map("feedback")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  actorId    String?
+  actor      User?    @relation("ActorAuditLogs", fields: [actorId], references: [id], onDelete: SetNull)
+  action     String   // e.g., "USER_LOGIN", "RESUME_DELETED", "ACCOUNT_EXPORTED", "ADMIN_ROLE_CHANGE"
+  targetType String   // "USER" | "RESUME" | "TEMPLATE" | "SYSTEM"
+  targetId   String?
+  metadata   Json?    // Never store raw passwords, tokens, or full PII resumes here
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt(sort: Desc)])
+  @@index([actorId])
+  @@map("audit_logs")
+}

@@ -1,0 +1,25 @@
+{
+  "name": "myrmyc-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=@myrmyc/server\" \"npm run dev --workspace=@myrmyc/web\"",
+    "dev:server": "npm run dev --workspace=@myrmyc/server",
+    "dev:web": "npm run dev --workspace=@myrmyc/web",
+    "build": "npm run build --workspace=@resumeforge/shared ; npm run build --workspace=@myrmyc/server ; npm run build --workspace=@myrmyc/web",
+    "db:push": "npm run db:push --workspace=@myrmyc/server",
+    "db:seed": "npm run db:seed --workspace=@myrmyc/server",
+    "test": "npm run test --workspace=@resumeforge/shared ; npm run test --workspace=@myrmyc/server ; npm run test --workspace=@myrmyc/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "@neon/config": "^1.9.1",
+    "@neon/env": "^1.6.2"
+  }
+}

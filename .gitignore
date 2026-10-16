@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build outputs
+dist/
+build/
+.output/
+
+# Environment Variables & Secrets (CRITICAL: Never commit .env files)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.neon
+.neon/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Prisma & Temporary artifacts
+apps/server/prisma/seed.js

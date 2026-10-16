@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF9F5;
+    color: #111215;
+    font-family: 'Plus Jakarta Sans', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(12, 73, 162, 0.15);
+    color: #0C49A2;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D6D4C7 transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D6D4C7;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #BEBBB0;
+  }
+
+  /* Tactile focus ring utility */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(12, 73, 162, 0.4);
+  }
+}
+
+/* Subtle physical paper textures & print helpers */
+.paper-canvas {
+  box-shadow: 0 20px 45px -10px rgba(18, 19, 22, 0.08), 0 0 0 1px rgba(18, 19, 22, 0.06);
+}
+
+@media print {
+  body {
+    background: transparent !important;
+    color: #000000 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
