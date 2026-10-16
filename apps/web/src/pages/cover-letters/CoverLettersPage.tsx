@@ -507,7 +507,7 @@ export const CoverLettersPage: React.FC = () => {
 
       {/* 4. CRUD & AI Generation Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
           <div className="w-full max-w-3xl bg-white border border-carbon-700 rounded-2xl p-6 shadow-2xl space-y-5 my-8">
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-carbon-700 pb-4">

@@ -35,7 +35,7 @@ const ProtectedRoute: React.FC = () => {
   if (isLoading) {
     return (
       <div className="h-screen w-screen bg-carbon-950 flex flex-col items-center justify-center gap-3 text-slate-400 font-mono text-xs">
-        <Loader2 className="w-6 h-6 animate-spin text-emerald-400" />
+        <Loader2 className="w-6 h-6 animate-spin text-royal-600" />
         <span>Authenticating session with Neon Cloud...</span>
       </div>
     );

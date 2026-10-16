@@ -541,7 +541,7 @@ export const ApplicationsPage: React.FC = () => {
 
       {/* New Application Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
           <div className="w-full max-w-lg bg-white border border-carbon-700 rounded-2xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-carbon-700 pb-3">
               <h3 className="font-semibold text-sm text-slate-100 flex items-center gap-2">

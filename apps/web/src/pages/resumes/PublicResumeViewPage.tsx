@@ -166,7 +166,7 @@ export const PublicResumeViewPage: React.FC = () => {
       {/* Main Presentation Paper Canvas */}
       <main className="flex-1 overflow-auto p-4 md:p-8 flex justify-center items-start print:p-0 print:m-0 print:overflow-visible">
         <div
-          className="bg-white text-slate-900 rounded-lg shadow-paper-elevated border border-archival-200 overflow-hidden print:rounded-none print:shadow-none print:border-none"
+          className="bg-white text-slate-100 rounded-lg shadow-paper-elevated border border-archival-200 overflow-hidden print:rounded-none print:shadow-none print:border-none"
           style={{
             width: pageSize === 'LETTER' ? '215.9mm' : '210mm',
             minHeight: pageSize === 'LETTER' ? '279.4mm' : '297mm',

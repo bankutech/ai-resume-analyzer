@@ -18,18 +18,18 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
   );
 
   return (
-    <div className="text-slate-900 leading-normal text-[9.5pt] font-sans">
+    <div className="text-slate-100 leading-normal text-[9.5pt] font-sans">
       {/* Header with modern left-aligned accent border */}
       <div className="border-l-4 pl-4 py-1 mb-4" style={{ borderColor: accentColor }}>
-        <h1 className="text-[22pt] font-display font-extrabold tracking-tight text-slate-950">
+        <h1 className="text-[22pt] font-display font-extrabold tracking-tight text-slate-100">
           {basics.fullName || 'Alex Rivera'}
         </h1>
         {basics.headline && (
-          <p className="text-[11pt] font-semibold text-slate-700 mt-0.5" style={{ color: accentColor }}>
+          <p className="text-[11pt] font-semibold text-slate-400 mt-0.5" style={{ color: accentColor }}>
             {basics.headline}
           </p>
         )}
-        <div className="flex flex-wrap items-center gap-x-3 text-[8.5pt] text-slate-600 mt-2 font-mono">
+        <div className="flex flex-wrap items-center gap-x-3 text-[8.5pt] text-slate-400 mt-2 font-mono">
           {basics.location && <span>📍 {basics.location}</span>}
           {basics.phone && <span>📞 {basics.phone}</span>}
           {basics.email && (
@@ -54,7 +54,7 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
             return (
               <section key="summary" className="mb-3">
                 {renderSectionHeader(sectionTitles.summary || 'Executive Summary')}
-                <p className="text-slate-800 text-[9.5pt] leading-relaxed">
+                <p className="text-slate-200 text-[9.5pt] leading-relaxed">
                   {summary.content}
                 </p>
               </section>
@@ -69,17 +69,17 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
                   {experience.filter((e) => e.visible !== false).map((exp) => (
                     <div key={exp.id}>
                       <div className="flex justify-between items-baseline">
-                        <span className="font-bold text-[10pt] text-slate-900">{exp.role}</span>
-                        <span className="text-[8.5pt] font-mono text-slate-500">
+                        <span className="font-bold text-[10pt] text-slate-100">{exp.role}</span>
+                        <span className="text-[8.5pt] font-mono text-slate-400">
                           {exp.startDate} – {exp.isCurrent ? 'Present' : exp.endDate}
                         </span>
                       </div>
-                      <div className="flex justify-between items-baseline text-[9pt] text-slate-600 mb-1">
+                      <div className="flex justify-between items-baseline text-[9pt] text-slate-400 mb-1">
                         <span className="font-medium" style={{ color: accentColor }}>{exp.organization}</span>
                         <span>{exp.location}</span>
                       </div>
                       {exp.bullets && exp.bullets.length > 0 && (
-                        <ul className="list-disc ml-4 space-y-0.5 text-[9pt] text-slate-700">
+                        <ul className="list-disc ml-4 space-y-0.5 text-[9pt] text-slate-200">
                           {exp.bullets.map((b, i) => (
                             <li key={i}>{b}</li>
                           ))}
@@ -99,14 +99,14 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
                 <div className="grid grid-cols-1 gap-1.5">
                   {skills.filter((s) => s.visible !== false).map((group) => (
                     <div key={group.id} className="flex items-center gap-2 text-[9pt]">
-                      <span className="font-bold text-slate-900 text-xs uppercase tracking-wider w-36 flex-shrink-0">
+                      <span className="font-bold text-slate-100 text-xs uppercase tracking-wider w-36 flex-shrink-0">
                         {group.category}
                       </span>
                       <div className="flex flex-wrap gap-1">
                         {group.items.map((item, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-0.5 rounded text-[8.5pt] font-medium bg-slate-100 text-slate-800 border border-slate-200"
+                            className="px-2 py-0.5 rounded text-[8.5pt] font-medium bg-archival-100 text-slate-200 border border-archival-200"
                           >
                             {item}
                           </span>
@@ -127,20 +127,20 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
                   {projects.filter((p) => p.visible !== false).map((proj) => (
                     <div key={proj.id}>
                       <div className="flex justify-between items-baseline">
-                        <span className="font-bold text-[9.5pt] text-slate-900">{proj.title}</span>
-                        {proj.date && <span className="text-[8.5pt] font-mono text-slate-500">{proj.date}</span>}
+                        <span className="font-bold text-[9.5pt] text-slate-100">{proj.title}</span>
+                        {proj.date && <span className="text-[8.5pt] font-mono text-slate-400">{proj.date}</span>}
                       </div>
                       {proj.techStack && proj.techStack.length > 0 && (
                         <div className="flex flex-wrap gap-1 my-0.5">
                           {proj.techStack.map((tech, i) => (
-                            <span key={i} className="text-[8pt] font-mono text-slate-600 bg-slate-100 px-1.5 py-0.2 rounded">
+                            <span key={i} className="text-[8pt] font-mono text-slate-400 bg-archival-100 border border-archival-200 px-1.5 py-0.2 rounded">
                               {tech}
                             </span>
                           ))}
                         </div>
                       )}
                       {proj.bullets && proj.bullets.length > 0 && (
-                        <ul className="list-disc ml-4 space-y-0.5 text-[9pt] text-slate-700">
+                        <ul className="list-disc ml-4 space-y-0.5 text-[9pt] text-slate-200">
                           {proj.bullets.map((b, i) => (
                             <li key={i}>{b}</li>
                           ))}
@@ -162,12 +162,12 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
                     <div key={edu.id}>
                       <div className="flex justify-between items-baseline font-bold text-[9.5pt]">
                         <span>{edu.institution}</span>
-                        <span className="text-[8.5pt] font-mono font-normal text-slate-500">
+                        <span className="text-[8.5pt] font-mono font-normal text-slate-400">
                           {edu.startDate} – {edu.endDate}
                         </span>
                       </div>
-                      <div className="text-[9pt] text-slate-700">{edu.degree}</div>
-                      {edu.gpa && <div className="text-[8.5pt] text-slate-600">GPA: {edu.gpa}</div>}
+                      <div className="text-[9pt] text-slate-200">{edu.degree}</div>
+                      {edu.gpa && <div className="text-[8.5pt] text-slate-400">GPA: {edu.gpa}</div>}
                     </div>
                   ))}
                 </div>
@@ -183,7 +183,7 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
                   {honors.filter((h) => h.visible !== false).map((hon) => (
                     <div key={hon.id} className="flex justify-between">
                       <span><strong>{hon.title}</strong> — {hon.issuer}</span>
-                      <span className="font-mono text-[8.5pt] text-slate-500">{hon.date}</span>
+                      <span className="font-mono text-[8.5pt] text-slate-400">{hon.date}</span>
                     </div>
                   ))}
                 </div>
@@ -199,7 +199,7 @@ export const ModernProTemplate: React.FC<{ document: ResumeDocument }> = ({ docu
                   {certifications.filter((c) => c.visible !== false).map((cert) => (
                     <div key={cert.id} className="flex justify-between">
                       <span><strong>{cert.name}</strong> ({cert.issuer})</span>
-                      <span className="font-mono text-[8.5pt] text-slate-500">{cert.date}</span>
+                      <span className="font-mono text-[8.5pt] text-slate-400">{cert.date}</span>
                     </div>
                   ))}
                 </div>

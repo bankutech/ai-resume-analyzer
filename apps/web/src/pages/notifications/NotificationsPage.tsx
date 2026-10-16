@@ -328,6 +328,17 @@ export const NotificationsPage: React.FC = () => {
           >
             Info
           </button>
+          <button
+            type="button"
+            onClick={() => setActiveFilter('SYSTEM')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition ${
+              activeFilter === 'SYSTEM'
+                ? 'bg-slate-950 text-white font-semibold shadow-paper-xs'
+                : 'bg-white text-slate-400 hover:text-slate-100 hover:bg-archival-50 border border-archival-200'
+            }`}
+          >
+            System
+          </button>
         </div>
 
         <span className="text-[11px] font-mono text-slate-400">

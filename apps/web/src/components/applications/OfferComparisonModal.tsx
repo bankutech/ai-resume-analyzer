@@ -84,7 +84,7 @@ export const OfferComparisonModal: React.FC<OfferComparisonModalProps> = ({
   const highestOffer = processedOffers.length > 0 ? processedOffers[0] : null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-150">
       <div
         className="w-full max-w-4xl max-h-[85vh] bg-white border border-carbon-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
